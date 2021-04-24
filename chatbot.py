@@ -69,7 +69,8 @@ def help_command(update: Update, context: CallbackContext) -> None:
                               /count ---I will count the calories you have been burned
                               EXERCISE SHOW
                               /show <keywords>  ---send you a gif for guiding exercise
-                              <keywords>includes pectorales、biceps、backmuscle、abdominal
+                              <keywords>includes pectorales、biceps、backmuscle、abdominal;
+                              such as /show biceps
                               ''')
 
 
