@@ -4,7 +4,7 @@ from telegram.ext import CallbackContext
 import configparser
 import redis
 import time
-
+import logging
 global redis1
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -46,7 +46,9 @@ def count_cal(update: Update, context: CallbackContext):
         sum = 0
         for k, v in redis1.hgetall(chat_id).items():
             cal_min = sport_cal.get(k.decode("utf-8"))
-        sum += cal_min*(int(v)//60)
+            logging.info(cal_min)
+            logging.info(int(v))
+            sum = cal_min*(int(v)//60)+sum
         context.bot.send_message(chat_id, "totally burn " +str(sum)+ " calories")
     except (IndexError, ValueError):
         update.message.reply_text('Usage: /count')
